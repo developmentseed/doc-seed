@@ -12,7 +12,7 @@ mdText = fs.readFileSync( __dirname + '/report.md').toString();
 //parse the md file's yaml frontmatter
 var results = yamlFront.loadFront(mdText);
 
-//define the map markdown container with rendering code
+//this defines map, a new token/associated parsing code inisde markdown-it that runs along with md.render()
 md.use(require('markdown-it-container'), 'map', {
   //function used to replace the container during markdown parsing
   render: function (tokens, idx) {

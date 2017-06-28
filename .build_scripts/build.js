@@ -5,10 +5,10 @@ var yamlFront = require('yaml-front-matter');
 
 
 //boilerplate html that includes code to get css and leaflet javascript files
-var top = fs.readFileSync(__dirname + '/top.html').toString();
-var bottom = fs.readFileSync(__dirname + '/bottom.html').toString();
+var top = fs.readFileSync('../app/doc_components/top.html').toString();
+var bottom = fs.readFileSync('../app/doc_components/bottom.html').toString();
 
-mdText = fs.readFileSync( __dirname + '/report.md').toString();
+mdText = fs.readFileSync('../app/report.md').toString();
 //parse the md file's yaml frontmatter
 var results = yamlFront.loadFront(mdText);
 
@@ -82,8 +82,8 @@ body = md.render(results.__content); //results.__content is everying in the md f
 html = top + body + bottom;
 
 //write the file
-fs.writeFile(__dirname + '/output/site.html', html, function(err) {
+fs.writeFile('../output/site.html', html, function(err) {
   if(err) {
       return console.log(err);
   }
-}); 
+});

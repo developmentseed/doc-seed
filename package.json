@@ -1,0 +1,8 @@
+{
+  "name": "doc-seed",
+  "version": "0.0.1",
+  "description": "microsite template for reports",
+  "repository": "https://github.com/developmentseed/doc-seed.git",
+  "author": "maxgrossman <m.grossman1813@gmail.com>",
+  "license": "MIT"
+}

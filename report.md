@@ -5,7 +5,7 @@ lorum [ipsum](http://www.google.com)
 
 ## Map
 maps:
-  google:
+  mapbox:
     api_key: <YOUR_KEY>
   location:
     latitude: 51.5285582

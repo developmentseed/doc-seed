@@ -1,5 +1,5 @@
 ---
-title: Neque Porro Quisquam Est Qui
+title: Machine Learning for Africa's Grid
 maps:
  south-africa:
   image-url: http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg

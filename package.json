@@ -6,7 +6,25 @@
   "author": "maxgrossman <m.grossman1813@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-page": "node --use_strict .build_scripts/buildHTML.js"
+    "build-page": "node --use_strict .build_scripts/buildHTML.js",
+    "serve": "DS_ENV=development node --use_strict .build_scripts/buildHTML.js && gulp serve",
+    "build": "DS_ENV=production NODE_ENV=production gulp",
+    "stage": "DS_ENV=staging NODE_ENV=staging gulp"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "react"
+          ]
+        }
+      ],
+      "require-globify",
+      "envify"
+    ]
   },
   "devDependencies": {
     "bourbon": "^4.3.4",

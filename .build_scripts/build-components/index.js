@@ -26,7 +26,7 @@ module.exports = function (pseudoLex, yfm, top, bottom) {
     return htmlChunk.join('');
   });
   //add in javascript that is dependent on on yfm but not the content of the md
-  pageHTML = header(yfm) + pageHTML;
   pageHTML = pageHTML.join('');
+  pageHTML = header(yfm) + pageHTML;
   return pageHTML
 };

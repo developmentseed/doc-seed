@@ -25,3 +25,9 @@ south-africa
 surf or drool
 ## rool of surfing
 dont take my wave.
+<<<<<<< Updated upstream
+=======
+## surf much?
+ya
+## another line
+>>>>>>> Stashed changes

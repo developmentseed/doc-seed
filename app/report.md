@@ -9,7 +9,7 @@ maps:
   latitude: -33.9249
   longitude: 18.4241
   access-token: 123456
-  height: 180
+  height: 45vh
 ---
 # Title
 lorum ipsum
@@ -25,4 +25,4 @@ south-africa
 surf or drool
 ## rool of surfing
 dont take my wave.
-## surf much?
+### surf much?

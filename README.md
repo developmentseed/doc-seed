@@ -27,7 +27,7 @@ maps:
    latitude: -33.9249 //initial latitude
    longitude: 18.4241 //initial longitude
    access-token: 123456 //will fill in {accessToken} in the image-url
-   height: 180 //height of the map when it displays on the website
+   height: 30vh //height of the map when it displays on the website (can use pixels (px) instead of viewheight (vh))
 ---
 ```
 

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+body {
+  font-size: 18pt;
+}
+
 @media (orientation: landscape){
   #header {
     height: 100vh);
@@ -16,6 +21,12 @@
   #header-title {
     color: #333333;
     padding-bottom: 15vh;
+  }
+  h1{
+    font-size: 5vw;
+  }
+  h2{
+    font-size: 3vw;
   }
 }
 
@@ -38,5 +49,28 @@
     padding-bottom: 30vw;
     padding-top: 2vw;
   }
+
+  h1{
+    font-size: 9vw;
+  }
+  h2{
+    font-size: 5vw;
+  }
 }
 
+h1, h2 {
+  color: #333333;
+}
+
+h3, h4, h5, h6{
+  color:#ca420b;
+}
+
+p {
+  color: #000000;
+}
+
+#markdown {
+  padding-left:12vw;
+  padding-right:12vw;
+}

@@ -46,7 +46,7 @@ module.exports = function (lexList, yfm) {
       }
       // return map html
       htmlEl = '<style>\
-      #' + name + ' { height: ' + height + 'px; }\
+      #' + name + ' { height: ' + height + '; }\
       </style>\
       <div id="' + name + '"></div>' + '<script>\
       var mymap = L.map("' + name + '").setView([' + latitude + ', ' + longitude + '], ' + initialZoom + ');\

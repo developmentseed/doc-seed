@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#header {
+  height: 40vh;
+  text-align: center;
+  padding: 35vh;
+  font-size: 3em;
+}
+
+#header-logo {
+    display: block;
+    margin: auto;
+    padding: 5vh;
+}
+
+#header-title {
+  color: #333333;
+}

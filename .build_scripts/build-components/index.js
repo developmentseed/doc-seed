@@ -25,5 +25,5 @@ module.exports = function (pseudoLex, yfm, top, bottom) {
     return htmlChunk.join('');
   });
   pageHTML = pageHTML.join('');
-  return pageHTML
+  return pageHTML;
 };

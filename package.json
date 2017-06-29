@@ -6,7 +6,7 @@
   "author": "maxgrossman <m.grossman1813@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-page": "node .build_scripts/buildHTML.js"
+    "build-page": "node --use_strict .build_scripts/buildHTML.js"
   },
   "devDependencies": {
     "bourbon": "^4.3.4",

@@ -1,5 +1,6 @@
 var fs = require('fs')
 var map = require('./map');
+var header = require('./header')
 var md = require('markdown-it')();
 
 module.exports = function (pseudoLex, yfm, top, bottom) {
@@ -24,6 +25,8 @@ module.exports = function (pseudoLex, yfm, top, bottom) {
     }
     return htmlChunk.join('');
   });
+  //add in javascript that is dependent on on yfm but not the content of the md
+  pageHTML = header(yfm) + pageHTML;
   pageHTML = pageHTML.join('');
   return pageHTML
 };

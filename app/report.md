@@ -1,4 +1,5 @@
 ---
+title: Neque Porro Quisquam Est Qui
 maps:
  south-africa:
   image-url: http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg

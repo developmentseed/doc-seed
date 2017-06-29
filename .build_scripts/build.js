@@ -2,8 +2,7 @@ var fs = require('fs');
 var md = require('markdown-it')();
 var container = require('markdown-it-container');
 var yamlFront = require('yaml-front-matter');
-var marked = require("marked");
-// var pageBuilder = require("./build-components/index.js")
+var pageBuilder = require("./build-components/index.js")
 
 
 // boilerplate html that includes code to get css and leaflet javascript files
@@ -13,7 +12,6 @@ var map = require('./build-components/map');
 
 // parse the md file and its yaml frontmatter
 var mdText = fs.readFileSync('../app/report.md').toString();
-var mdLex = marked.lexer(mdText);
 
 var results = yamlFront.loadFront(mdText);
 
@@ -42,9 +40,9 @@ var results = yamlFront.loadFront(mdText);
 var pseudoLex = mdText.match(/:::.?([\s\S]*?):::/g).map((lex) => {
   return lex.split('\n');
 });
-
-var pageHTML = pageBuilder(pseudoLex)
-
+// console.log(pseudoLex);
+var pageHTML = pageBuilder(pseudoLex);
+console.log(pageHTML);
 // write the file
 // fs.writeFile('../output/site.html', html, function(err) {
 //   if(err) {

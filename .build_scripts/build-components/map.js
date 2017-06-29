@@ -1,5 +1,4 @@
-module.exports = {
-  map: function () {
+module.exports = function () {
     const name = this.name;
     const results = this.results
     // get map attributes from yaml

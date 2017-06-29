@@ -11,13 +11,13 @@ maps:
   access-token: 123456
   height: 180
 ---
-::: typed
+:::-typed
 # Title
 lorum ipsum
 ## Subheader
 lorum [ipsum](http://www.google.com)
 :::
 
-::: map
+:::-map
 south-africa
 :::

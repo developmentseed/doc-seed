@@ -5,13 +5,8 @@
 module.exports = function (header, bool) {
   let div;
   if (bool) {
-    div = ['<div class='];
-    const tag = header.split('-')[1];
-    if (tag === 'typed') {
-      div.push('"typed">');
-    } else {
-      div.push('"map">');
-    }
+    let tags = header.split('-')[1].split(' ');
+    div = ['<div class="' + tags.join(' ') + '">'];
   } else {
     div = ['</div>'];
   }

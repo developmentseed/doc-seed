@@ -5,6 +5,9 @@
   "repository": "https://github.com/developmentseed/doc-seed.git",
   "author": "maxgrossman <m.grossman1813@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build-page": "node .build_scripts/build.js"
+  },
   "devDependencies": {
     "eslint": "^4.1.1",
     "eslint-config-semistandard": "^11.0.0",

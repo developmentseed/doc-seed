@@ -3,30 +3,17 @@ microsite template for reports
 
 ### how
 
-Write markdown 'blocks' in the `app > report.md`.
+Write markdown in the `app > report.md`.
+To add a map, include a map block like
 
-Blocks are defined by an opening and closing `:::` tags and are of either class `typed` or `map`
-
-Additional classes can be added to include custom styling from a css file.
-
-##### typed
-
-``` markdown
-:::-typed someClass
-# This is a header
-*emphasize a point*
-:::
 ```
-
-##### map
-
-``` markdown
 :::-map
 name-of-map
 :::
 ```
 
-For a map, be sure to add its specific parameters to the YAML front matter.
+Then in the maps field of the YAML front matter, include the parameters for
+the map.
 
 ``` markdown
 
@@ -44,7 +31,7 @@ maps:
 ---
 ```
 
-With markdown and YFM generated, run
+With content written, build the html page by running
 
 ```
 yarn build-pages
@@ -53,15 +40,12 @@ yarn build-pages
 A markdown parser will look through the markdown and supply an html file in the `output` folder like:
 
 ``` html
-<div class="typed someClass">
-  <h1>Title</h1>
-  <p>lorum ipsum</p>
-  <h2>Subheader</h2>
-  <p>lorum <a href="http://www.google.com">ipsum</a></p>
+<h1>Title</h1>
+<p>lorum ipsum</p>
+<h2>Subheader</h2>
+<p>lorum <a href="http://www.google.com">ipsum</a></p>
 </div>
 <div class="map">
   <!--leaflet map w/parameters-->
 </div>     
 ```
-
-#

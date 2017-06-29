@@ -5,8 +5,7 @@
 module.exports = function (header, bool) {
   let div;
   if (bool) {
-    let tags = header.split('-')[1].split(' ');
-    div = ['<div class="' + tags.join(' ') + '">'];
+    div = ['<div class="' + header + '">'];
   } else {
     div = ['</div>'];
   }

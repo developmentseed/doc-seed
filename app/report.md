@@ -10,20 +10,17 @@ maps:
   access-token: 123456
   height: 180
 ---
-:::-typed surf
 # Title
 lorum ipsum
 ## Subheader
 lorum [ipsum](http://www.google.com)
-:::
+
 
 :::-map
 south-africa
 :::
 
-:::-typed
 # Rools of life
 surf or drool
 ## rool of surfing
 dont take my wave.
-:::

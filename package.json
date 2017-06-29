@@ -6,9 +6,10 @@
   "author": "maxgrossman <m.grossman1813@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-page": "node .build_scripts/build.js"
+    "build-page": "node .build_scripts/buildHTML.js"
   },
   "devDependencies": {
+    "bourbon": "^4.3.4",
     "eslint": "^4.1.1",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
@@ -16,8 +17,12 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jeet": "^7.1.0",
     "markdown-it": "^8.3.1",
     "markdown-it-container": "^2.0.0",
     "yaml-front-matter": "^3.4.0"
+  },
+  "dependencies": {
+    "commonmark": "^0.27.0"
   }
 }

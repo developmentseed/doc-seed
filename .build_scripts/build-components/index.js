@@ -28,5 +28,4 @@ module.exports = function (pseudoLex, yfm, top, bottom) {
   //add in javascript that is dependent on on yfm but not the content of the md
   pageHTML = pageHTML.join('');
   pageHTML = header(yfm) + pageHTML;
-  return pageHTML
 };

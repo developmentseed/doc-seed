@@ -13,7 +13,7 @@ var map = require('./build-components/map');
 // parse the md file and its yaml frontmatter
 var mdText = fs.readFileSync('../app/report.md').toString();
 
-var results = yamlFront.loadFront(mdText);
+var yfm = yamlFront.loadFront(mdText);
 
 // define the map markdown container with rendering code
 // md.use(container, 'map', {
@@ -40,12 +40,11 @@ var results = yamlFront.loadFront(mdText);
 var pseudoLex = mdText.match(/:::.?([\s\S]*?):::/g).map((lex) => {
   return lex.split('\n');
 });
-// console.log(pseudoLex);
-var pageHTML = pageBuilder(pseudoLex);
-console.log(pageHTML);
+var pageHTML = pageBuilder(pseudoLex, yfm);
+pageHTML = top + pageHTML.join('') + bottom;
 // write the file
-// fs.writeFile('../output/site.html', html, function(err) {
-//   if(err) {
-//       return console.log(err);
-//   }
-// });
+fs.writeFile('../output/site.html', pageHTML, function (err) {
+  if (err) {
+    return console.log(err);
+  }
+});

@@ -37,10 +37,10 @@ maps:
    attribution: Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>
    max-zoom: 18
    initial-zoom: 12
-   latitude: -33.9249
-   longitude: 18.4241
-   access-token: 123456
-   height: 180
+   latitude: -33.9249 //initial latitude
+   longitude: 18.4241 //initial longitude
+   access-token: 123456 //will fill in {accessToken} in the image-url
+   height: 180 //height of the map when it displays on the website
 ---
 ```
 

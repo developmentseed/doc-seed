@@ -1,5 +1,4 @@
 ---
----
 maps:
  south-africa:
   image-url: http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg
@@ -15,5 +14,13 @@ maps:
 lorum ipsum
 ## Subheader
 lorum [ipsum](http://www.google.com)
-::: map south-africa
+
+
+:::-map
+south-africa
 :::
+
+# Rools of life
+surf or drool
+## rool of surfing
+dont take my wave.

@@ -18,6 +18,7 @@ the map.
 ``` markdown
 
 ---
+title: Report by Development Seed //The title that appears in the header of the report
 maps:
  name-of-map:
    image-url: http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg

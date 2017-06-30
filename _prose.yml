@@ -1,8 +1,10 @@
 prose:
   rooturl: app
   ignore:
-    # no need to show html
+    # no need to show components that make the page
     - /app/index.html
+    - /app/doc_components
+    - /app/assets
     # config
     - /_prose.yml
     # development

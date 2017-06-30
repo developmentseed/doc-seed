@@ -1,15 +1,17 @@
 prose:
-  rooturl: /
-  ignore :
-    - app/assets/
-    - app/index.html
-    - gulpfile.js
-    - package.json
-    - yarn.lock
-    - .gitignore
-    - LICENSE
-  siteurl: ...
-  media: app/assets/graphics
+  rooturl: app
+  ignore:
+    # no need to show html
+    - /app/index.html
+    # config
+    - /_prose.yml
+    # development
+    - /gulpfile.js
+    - /package.json
+    - /yarn.lock
+    - /.gitignore
+    - /LICENSE
+
   metadata:
     "app/":
       - name: "title"

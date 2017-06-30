@@ -1,5 +1,9 @@
 prose:
+
   rooturl: app
+
+  media: app/assets/graphics/content
+
   ignore:
     # no need to show components that make the page
     - /app/index.html

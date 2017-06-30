@@ -1,20 +1,20 @@
-rooturl: /
-ignore :
-  - app/assets/
-  - app/index.html
-  - gulpfile.js
-  - package.json
-  - yarn.lock
-  - .gitignore
-  - LICENSE
-siteurl: ...
-site:
-media: app/assets/graphics
-metadata:
-  "app/"
-    - name: "title"
-      field:
-        element: "text"
-        label: "Report Name"
-        value: ""
+prose:
+  rooturl: /
+  ignore :
+    - app/assets/
+    - app/index.html
+    - gulpfile.js
+    - package.json
+    - yarn.lock
+    - .gitignore
+    - LICENSE
+  siteurl: ...
+  media: app/assets/graphics
+  metadata:
+    "app/":
+      - name: "title"
+        field:
+          element: "text"
+          label: "Report Name"
+          value: ""
 

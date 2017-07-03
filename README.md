@@ -4,11 +4,19 @@ microsite template for reports
 ### how
 
 Write markdown in the `app > report.md`.
-To add a map, include a map block like
+To add a map, include a map block with the following parameters in any order.
 
 ```
 :::-map
-name-of-map
+name: name.of.map
+baseLayer: https://api.tiles.mapbox.com/v4/mapbox.{layerid}/{z}/{x}/{y}.png
+attribution: group to attribute
+maxZoom: {0-21}
+initialZoom: zoom level lower than maxZoom
+latitude: {-90 - 90}
+longitude: {-180 - 180}
+height: pixel # without px
+accessToken: mapbox accesstoken
 :::
 ```
 
@@ -48,5 +56,5 @@ A markdown parser will look through the markdown and supply an html file in the 
 </div>
 <div class="map">
   <!--leaflet map w/parameters-->
-</div>     
+</div>
 ```

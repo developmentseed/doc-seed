@@ -8,46 +8,23 @@
 </head>
 <body>
 <div id="header">
-  <p id="header-logo"><img id="header-logo" src="./assets/graphics/layout/ds-logo-pos.svg" alt="Development Seed Logo"></p>
+  <p><img id="header-logo" src="./assets/graphics/layout/ds-logo-pos.svg" alt="Development Seed Logo"></p>
   <p id="header-title"></p>
 </div>
-<div id="markdown"><script>document.getElementById("header-title").innerHTML="ORMA Dataflow";</script><h3>Introduction</h3>
-<p>People capture insights about road quality infrastructure using many different denominators and data formats. Being open and able to ingest these different data is challenging, yet crucial to ensure ORMA allows policy makers to be ever more informed when making decision about road infrastructure.</p>
-<p>To this end, Development Seed has devised a high level structure for data pipelines that feed into the ORMA database. This high level pipeline follows the following three steps:</p>
-<pre><code>1. Match outside data to OpenStreetMap XML data model for ease of import into ORMA db</code></pre>
-<pre><code>2. Systemically conflate new data with existing ORMA data using the Java OpenStreetMap Editor</code></pre>
-<pre><code>3. Push changes to the ORMA db via the ORMA API</code></pre>
-<pre><code> The remainder of this document gives a more detailed overview of these pipeline components as well as details how they can be applied to individual ORMA data pipelines</code></pre>
-<h3>General dataflow</h3>
-<ol>
-<li>
-<h4>Match outside data to OpenStreetMap XML data mode</h4>
-</li>
-</ol>
-<p>Matching outside data to the OpenStreetMap data model, which ORMA uses, is paramount.</p>
-<p>It ensures incorporating new data sources is standardized, ORMA maintainers can use the vast number of open tools that exist for converting data to OSM complaint formats, and that the API’s jobs remain simple.</p>
-<p>While conversion methods are germain to the outside data source of interest, when moving data sent to the ORMA database should be one of two types part of the OSM data model:</p>
-<pre><code>  - Discrete nodes that represent measurements taken along roads</code></pre>
-<pre><code>  - Discrete ways that represent the roads themselves with ROADs complaint road quality attribute</code></pre>
-<ol start="2">
-<li>
-<h4>Conflate outside data geometries and attributes with existing ORMA data</h4>
-</li>
-</ol>
-<pre><code>  After standardizing outside data, it needs to be conflated with the existing database. Two data characteristics can be conflated - attributes and geometry. Geometry conflation is to match then merge new data source geometries into the existing database. Attributes conflation is to map all new attributes from outside data to corresponding data within the existing database.</code></pre>
-<pre><code>  Conflation is necessary to make sure that new data does not duplicate information existing in the database, new roads attributes are not overlooked because new and existing data have matching geometry, and that wholly new roads are topologically integrated with the existing road network.</code></pre>
-<pre><code>   Since the outside data sources are many, conflation needs to be standardized and use a tool built for such a systemic approach. As such, conflation should follow the below steps and make use of the Java OpenStreetMap Editor (JOSM for short).</code></pre>
-<pre><code>    1. Using JOSM’s search functionality, find each of the classes within the attribute ‘mappable’ to the ROADs class for road quality and ‘map’ them to their corresponding ROADs class</code></pre>
-<pre><code>    2. For example when working with a RoadLab dataset that includes 13 Roads defined as ‘poor’, 10 as Fair, and 15 as Good, use JOSM to select all of these roads, then make use of the ‘find in selection’ tool to isolate all ‘poor’, ‘fair’, and ‘good’ roads, followed by mapping them to the equivalent ROADs standard class.</code></pre>
-<pre><code>    3. Within JOSM, make a task list for each of the data points in the outside data source using the ‘TODO’ plugin. Then follow the next two steps for each of the data points.</code></pre>
-<pre><code>      - Conflate attributes and geometries for each data point.</code></pre>
-<pre><code>      - Using the todo list, inspect the geometry and attributes of each data point and make the following two judgements</code></pre>
-<pre><code>      - First, decide if the new dataset road matches that of an existing dataset in the database. If it does, do not bring the new geometry into the database. If the data sets don’t match, copy the new source into the existing db and connect it to the road network accordingly (using the underlying satellite imagery as guidance)</code></pre>
-<pre><code>      - If the new data matches existing data, compare the attributes of both. If the new data has a different road quality attribute that is authoritative either because it is newer, or the person doing the conflation has additional information to suggest the outside data is truest to the road quality, copy the new data attributes into the existing data.</code></pre>
-<pre><code>      - Upon conflation, use JOSM’s validation tool to ensure conflation did not lead to any unintended/improper changes to the database.</code></pre>
-<pre><code>  3. . #### Upload to the db using the ORMA API</code></pre>
-<pre><code>    After conflation, and assurance that changes will not be problematic in the ORMA database, upload changes into the database.</code></pre>
-<p>The way in which each of the new data sources of interest will fit into this general data model is as follows.</p>
+<div id="markdown">
+
+<script>document.getElementById("header-title").innerHTML="test";</script><h1>testing</h1>
+<p>some words</p>
+<style> #testMap { height: 500px; } </style>
+    <div id="testMap"></div>
+    <script> var mymap = L.map("testMap").setView([10, 10], 12);
+    L.tileLayer("https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token={accessToken}", {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      accessToken:'pk.eyJ1IjoibWF4Z3Jvc3NtYW4iLCJhIjoiY2loZTQ5bHpxMGlyaXRwbHpsN3FscjA3bSJ9.ry1OJsQ5SCbhrH7fYd7adg'
+    }).addTo(mymap);
+    </script><h3>some more workds</h3>
+<p>that are for testing</p>
 </div>
 </body>
 </html>

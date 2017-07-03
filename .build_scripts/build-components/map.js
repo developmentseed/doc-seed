@@ -1,62 +1,68 @@
-var divver = require('./divver');
-
-module.exports = function (lexList, yfm) {
-  return lexList.map((lexItem, index) => {
-    let htmlEl;
-    if (index === 0 || index === (lexList.length - 1)) {
-      if (index === 0) {
-        htmlEl = divver(lexItem, true);
-      } else {
-        htmlEl = divver(lexItem, false);
+var _ = require('lodash');
+'use-strict'
+module.exports = function (lexList) {
+  /*
+   * map list of keys in map bock to objects matching
+   * the k,v in said map block.
+   */
+  function mapParamsFinder(mdContents) {
+    return [
+      'name: ','attribution: ', 'baseLayer: ',
+      'maxZoom: ', 'initialZoom: ', 'longitude: ',
+      'latitude: ' ,'accessToken: ', 'height: '
+    ].map((elKey) => {
+      let matchObj = {}
+      let match = mdContents.filter((mdContent) => {
+        return mdContent.match(elKey)
+      })
+      if (match[0]) {
+        match = match[0].split(elKey)[1];
       }
-    } else {
-      // map name
-      const name = lexItem;
-      // map parameters
-      const mapInfo = yfm['maps'][name];
-      let attribution = mapInfo['attribution'];
-      let imageURL = mapInfo['image-url'];
-      let maxZoom = mapInfo['max-zoom'];
-      let initialZoom = mapInfo['initial-zoom'];
-      let latitude = mapInfo['latitude'];
-      let longitude = mapInfo['longitude'];
-      const accessToken = mapInfo['access-token'];
-      let height = mapInfo['height'];
-      // fill null values with defaults
-      if (!attribution) {
-        attribution = '© Development Seed';
-      }
-      if (!latitude) {
-        latitude = 0;
-      }
-      if (!longitude) {
-        longitude = 0;
-      }
-      if (!maxZoom) {
-        maxZoom = 18;
-      }
-      if (!initialZoom) {
-        initialZoom = 12;
-      }
-      if (!imageURL) {
-        imageURL = 'http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg';
-      }
-      if (!height) {
-        height = 180;
-      }
-      // return map html
-      htmlEl = '<style>\
-      #' + name + ' { height: ' + height + '; }\
-      </style>\
-      <div id="' + name + '"></div>' + '<script>\
-      var mymap = L.map("' + name + '").setView([' + latitude + ', ' + longitude + '], ' + initialZoom + ');\
-      L.tileLayer("' + imageURL + '", {\
-      attribution: \'' + attribution + '\',\
-      maxZoom: ' + maxZoom + ',\
-      accessToken: ' + accessToken + '\
-      }).addTo(mymap);\
-      </script>';
-    }
-    return htmlEl;
-  });
+      matchObj[elKey.split(':')[0]] = match;
+      return matchObj;
+    })
+  }
+  // assign mappedComponents to mapComponentFinder, then reduce
+  // list of objects to one big object
+  let mapParams = _.reduce(
+    mapParamsFinder(lexList),
+    (mappedParamsObj, mappedParam) => {
+      return _.assign(mappedParamsObj, mappedParam)
+    }, {}
+  )
+  console.log(mapParams)
+  // fill null values with defaults
+  if (!mapParams.attribution) {
+    mapParams.attribution = '© Development Seed';
+  }
+  if (!mapParams.latitude) {
+    mapParams.latitude = 0;
+  }
+  if (!mapParams.longitude) {
+    mapParams.longitude = 0;
+  }
+  if (!mapParams.maxZoom) {
+    mapParams.maxZoom = 18;
+  }
+  if (!mapParams.initialZoom) {
+    mapParams.initialZoom = 12;
+  }
+  if (!mapParams.baseLayer) {
+    baseLayer = 'https://api.tiles.mapbox.com/v4/{id}/mapbox.streets/{x}/{y}.png?';
+  }
+  if (!mapParams.height) {
+   mapParams.height = 180;
+  }
+  // return map html
+  return [
+    `<style> #` + mapParams.name + ` { height: ` + mapParams.height + `px; } </style>
+    <div id="` + mapParams.name + `"></div>
+    <script> var mymap = L.map("` + mapParams.name + `").setView([` + mapParams.latitude + `, ` + mapParams.longitude + `], ` + mapParams.initialZoom + `);
+    L.tileLayer("` + mapParams.baseLayer + `?access_token={accessToken}", {
+      attribution: '` + mapParams.attribution + `',
+      maxZoom: ` + mapParams.maxZoom + `,
+      accessToken:'` + mapParams.accessToken + `'
+    }).addTo(mymap);
+    </script>`
+  ]
 };

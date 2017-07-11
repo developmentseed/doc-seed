@@ -17,7 +17,6 @@ If you use [`nvm`](https://github.com/creationix/nvm), activate the desired Node
 
 ```
 nvm install
->>>>>>> feature/metalsmith
 ```
 
 Install Node modules:

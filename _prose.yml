@@ -19,10 +19,25 @@ prose:
     - /LICENSE
 
   metadata:
+<<<<<<< HEAD
     "app/":
+=======
+    "app/posts":
+>>>>>>> feature/metalsmith
       - name: "title"
         field:
           element: "text"
           label: "Report Name"
           value: ""
+<<<<<<< HEAD
 
+=======
+      - name: "permalink"
+        field:
+          element: "hidden"
+          value: "/"
+      - name: 'layout'
+        field:
+          element: "hidden"
+          value: 'post.html'
+>>>>>>> feature/metalsmith

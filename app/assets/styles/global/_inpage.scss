@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Global: Inpage
+   ========================================================================== */
+
+.inpage__header {
+  padding: ($global-spacing * 2) 0;
+
+  > .inner {
+    @extend .row;
+  }
+}
+
+.inpage__headline,
+.inpage__body .prose {
+  @include column(12/12);
+  max-width: 48rem;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.inpage__headline {
+  &::after {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: $base-font-color;
+    display: block;
+    margin: 0.75rem 0 0 0;
+  }
+}
+
+.inpage__title {
+  @extend .heading, .heading--xlarge;
+}
+
+.inpage__subtitle {
+  position: relative;
+  @extend .heading-alt;
+  color: rgba($base-font-color, 0.64);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+.inpage__body {
+  > .inner {
+    @extend .row;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// TEMPORARY
+.inpage__actions {
+  clear: left;
+  margin-top: $global-spacing * 2;
+
+  ul {
+    @extend .clearfix;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+      margin-right: $global-spacing;
+    }
+  }
+}
+
+.inpage__footer {
+  position: fixed;
+  bottom: $global-spacing * 2;
+
+  > .inner {  
+    @extend .row;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .inpage__actions {
+    @include column(12/12);
+    max-width: 48rem;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Buttons
+   ========================================================================== */
+
+.pa-next {
+  @extend .button, .button--primary-raised-dark;
+
+  &::after {
+    @extend %collecticon-chevron-right;
+  }
+}
+
+.pa-prev {
+  @extend .button, .button--base-raised-light;
+
+  &::before {
+    @extend %collecticon-chevron-left;
+  }
+}

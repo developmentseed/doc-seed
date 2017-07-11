@@ -19,7 +19,7 @@ prose:
     - /LICENSE
 
   metadata:
-    "app/posts/s0-introduction":
+    "app/posts":
       - name: "title"
         field:
           element: "text"
@@ -33,17 +33,7 @@ prose:
         field:
           element: "hidden"
           value: 'post.html'
-    "app/posts/s1-components":
-      - name: "title"
+      - name: "date"
         field:
           element: "text"
-          label: "Report Name"
-          value: ""
-      - name: "permalink"
-        field:
-          element: "hidden"
-          value: "/"
-      - name: 'layout'
-        field:
-          element: "hidden"
-          value: 'post.html'
+          value: "2012-08-20"

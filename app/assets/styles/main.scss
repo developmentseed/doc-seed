@@ -12,7 +12,7 @@
 @charset "UTF-8";
 
 
-/* Third-party
+/* Libraries
    ========================================================================== */
 
 /**
@@ -22,45 +22,27 @@
 
 @import "bourbon";
 
-/**
- * Using Jeet, a grid system designed for humans:
- * http://jeet.gs/
- */
 
-@import "jeet";
+/* Reboot
+   ========================================================================== */
 
-/**
- * Normalize.css, a modern, HTML5-ready alternative to CSS resets:
- * http://necolas.github.io/normalize.css/
- */
-
-@import "vendor/normalize";
+@import "normalize";
+@import "reset";
 
 /**
- * Kenneth Ormandy's OpenType features—ligatures, kerning, and more—to Normalize.css:
+ * Using Kenneth Ormandy's OpenType features—ligatures, kerning, and
+ * more—to Normalize.css:
  * https://github.com/kennethormandy/normalize-opentype.css
  */
 
-@import "vendor/normalize-opentype";
+@import "normalize-opentype";
 
 
-/* Ui Seed
+/* Settings
    ========================================================================== */
 
-@import "ui-seed";
 
-
-/* Core
+/* Main
    ========================================================================== */
 
-@import "core/base";
-@import "core/typography";
-@import "core/collecticons";
-
-
-/* Global
-   ========================================================================== */
-
-@import "global/page";
-@import "global/inpage";
-@import "global/page-prime-nav";
+@import "base";

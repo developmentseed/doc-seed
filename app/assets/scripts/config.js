@@ -27,6 +27,4 @@ if (process.env.DS_ENV === 'staging') {
 }
 defaultsDeep(config, configurations.production);
 
-// The require doesn't play super well with es6 imports. It creates an internal
-// 'default' property. Export that.
-export default config.default;
+module.exports = config;

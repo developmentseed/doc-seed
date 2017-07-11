@@ -1,65 +1,52 @@
-<h1 align="center">Doc Seed</h1>
+# doc-seed
+microsite template for reports
 
+### how
 
-## Installation and Usage
-
-The steps below will walk you through setting up your own instance of Doc Seed
-
-### Install Project Dependencies
-To set up the development environment for this website, you'll need to install the following on your system:
-
-- [Node](http://nodejs.org/) v6 (To manage multiple node versions we recommend [nvm](https://github.com/creationix/nvm))
-- [Yarn](https://yarnpkg.com/) Package manager
-
-### Install Application Dependencies
-
-If you use [`nvm`](https://github.com/creationix/nvm), activate the desired Node version:
+Write markdown in the `app > report.md`.
+To add a map, include a map block like
 
 ```
-nvm install
+:::-map
+name-of-map
+:::
 ```
 
-Install Node modules:
+Then in the maps field of the YAML front matter, include the parameters for
+the map.
 
-```
-yarn install
-```
+``` markdown
 
-### Usage
-
-#### Config files
-All the config files can be found in `app/assets/scripts/config`.
-After installing the projects there will be 3 main files:
-  - `local.js` - Used only for local development. On production this file should not exist or be empty.
-  - `staging.js`
-  - `production.js`
-
-The `production.js` file serves as base and the other 2 will override it as needed:
-  - `staging.js` will be loaded whenever the env variable `DS_ENV` is set to staging.
-  - `local.js` will be loaded if it exists.
-
-The following options must be set: (The used file will depend on the context):
-
-Example:
-```
-module.exports = {
-};
+---
+title: Report by Development Seed //The title that appears in the header of the report
+maps:
+ name-of-map:
+   image-url: http://a.aerial.openstreetmap.org.za/ngi-aerial/{z}/{x}/{y}.jpg
+   attribution: Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>
+   max-zoom: 18
+   initial-zoom: 12
+   latitude: -33.9249 //initial latitude
+   longitude: 18.4241 //initial longitude
+   access-token: 123456 //will fill in {accessToken} in the image-url
+   height: 30vh //height of the map when it displays on the website (can use pixels (px) instead of viewheight (vh))
+---
 ```
 
-#### Starting the app
+With content written, build the html page by running
 
 ```
-yarn run serve
+yarn build-pages
 ```
-Compiles the sass files, javascript, and launches the server making the site available at `http://localhost:3000/`
-The system will watch files and execute tasks whenever one of them changes.
-The site will automatically refresh since it is bundled with livereload.
 
-# Deployment
-To prepare the app for deployment run:
+A markdown parser will look through the markdown and supply an html file in the `output` folder like:
 
+``` html
+<h1>Title</h1>
+<p>lorum ipsum</p>
+<h2>Subheader</h2>
+<p>lorum <a href="http://www.google.com">ipsum</a></p>
+</div>
+<div class="map">
+  <!--leaflet map w/parameters-->
+</div>     
 ```
-yarn run build
-```
-This will package the app and place all the contents in the `dist` directory.
-The app can then be run by any web server.

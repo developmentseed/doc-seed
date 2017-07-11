@@ -1,7 +1,7 @@
 'use strict';
-/*
- * App config for production.
- */
-module.exports = {
-  environment: 'production'
+import logo from './logo';
+
+export default {
+  environment: 'production',
+  consoleMessage: logo
 };

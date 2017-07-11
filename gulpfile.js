@@ -1,7 +1,6 @@
 'use strict';
 
 var fs = require('fs');
-var cp = require('child_process');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
@@ -18,9 +17,7 @@ var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var SassString = require('node-sass').types.String;
 var notifier = require('node-notifier');
-var UISEED = require('ui-seed/gulp-addons');
-
-var metalsmithTask = require('./metalsmith');
+var exec = require('child_process').exec;
 
 // /////////////////////////////////////////////////////////////////////////////
 // --------------------------- Variables -------------------------------------//
@@ -59,34 +56,32 @@ gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
 
-gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'metalsmith'], function () {
+gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'buildHTML'], function () {
   browserSync({
     port: 3000,
-    ghostMode: false,
     server: {
-      baseDir: ['.tmp', 'build'],
+      baseDir: ['.tmp', 'app'],
       routes: {
         '/node_modules': './node_modules'
-      },
-      middleware: UISEED.graphicsMiddleware(fs)
+      }
     }
   });
 
   // watch for changes
   gulp.watch([
-    'app/**/*.html',
-    'app/**/*.ejs',
-    'app/**/*.md'
-  ], ['metalsmith', reload]);
+    'app/*.html',
+    'app/assets/graphics/**/*',
+    '.tmp/assets/fonts/**/*'
+  ]).on('change', reload);
 
   gulp.watch('app/assets/styles/**/*.scss', ['styles']);
   gulp.watch('app/assets/fonts/**/*', ['fonts']);
   gulp.watch('package.json', ['vendorScripts']);
-  gulp.watch('app/assets/graphics/collecticons/**', ['collecticons']);
+  gulp.watch('app/*.md', ['buildHTML'])
 });
 
 gulp.task('clean', function () {
-  return del(['.tmp', 'dist', 'assets/content'])
+  return del(['.tmp', 'dist'])
     .then(function () {
       $.cache.clearAll();
     });
@@ -161,48 +156,15 @@ gulp.task('vendorScripts', function () {
     .pipe(reload({stream: true}));
 });
 
-// /////////////////////////////////////////////////////////////////////////////
-// ------------------------- Collecticon tasks -------------------------------//
-// --------------------- (Font generation related) ---------------------------//
-// ---------------------------------------------------------------------------//
-gulp.task('collecticons', function (done) {
-  var args = [
-    'node_modules/collecticons-processor/bin/collecticons.js',
-    'compile',
-    'app/assets/graphics/collecticons/',
-    '--font-embed',
-    '--font-dest', 'app/assets/fonts',
-    '--font-name', 'Collecticons',
-    '--font-types', 'woff',
-    '--style-format', 'sass',
-    '--style-dest', 'app/assets/styles/core/',
-    '--style-name', 'collecticons',
-    '--class-name', 'collecticon',
-    '--author-name', 'Development Seed',
-    '--author-url', 'https://developmentseed.org/',
-    '--no-preview'
-  ];
-
-  return cp.spawn('node', args, {stdio: 'inherit'})
-    .on('close', done);
-});
-
-// /////////////////////////////////////////////////////////////////////////////
-// ------------------------ Metalsmith tasks ---------------------------------//
-// ---------------------------------------------------------------------------//
-gulp.task('metalsmith', function (done) {
-  metalsmithTask().build(function (err, files) {
-    if (err) {
-      notifier.notify({
-        title: 'Oops! Browserify errored:',
-        message: err.message
-      });
-      console.log('Metalsmith error:', err);
-      if (prodBuild) {
-        process.exit(1);
-      }
+gulp.task('buildHTML', function () {
+  let cmd = 'yarn run build-page';
+  exec(cmd, function(error, stdout, stderr) {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
     }
-    done();
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
   });
 });
 
@@ -210,7 +172,7 @@ gulp.task('metalsmith', function (done) {
 // --------------------------- Helper tasks -----------------------------------//
 // ----------------------------------------------------------------------------//
 
-gulp.task('build', ['vendorScripts', 'javascript', 'collecticons', 'metalsmith'], function () {
+gulp.task('build', ['vendorScripts', 'javascript'], function () {
   gulp.start(['html', 'images', 'fonts', 'extras'], function () {
     return gulp.src('dist/**/*')
       .pipe($.size({title: 'build', gzip: true}))
@@ -243,29 +205,25 @@ gulp.task('styles', function () {
           return v;
         }
       },
-      includePaths: require('node-bourbon').with('node_modules/jeet', UISEED.scssPath)
+      includePaths: ['.'].concat(require('node-bourbon').includePaths)
     }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
     .pipe(reload({stream: true}));
 });
 
-// After being rendered, process the html files. (merge css files, etc)
-gulp.task('html', function () {
-  var conf = require('./_config');
-  return gulp.src('_site/**/*.html')
+gulp.task('html', ['styles'], function () {
+  return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    // Do not compress comparisons, to avoid MapboxGLJS minification issue
-    // https://github.com/mapbox/mapbox-gl-js/issues/4359#issuecomment-286277540
-    .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
+    .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace({prefix: conf.baseurl || ''}))
-    .pipe(gulp.dest('_site'));
+    .pipe(revReplace())
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', function () {
-  return gulp.src(['app/assets/graphics/**/*'])
+  return gulp.src('app/assets/graphics/**/*')
     .pipe($.cache($.imagemin([
       $.imagemin.gifsicle({interlaced: true}),
       $.imagemin.jpegtran({progressive: true}),

@@ -251,7 +251,7 @@ gulp.task('styles', function () {
 });
 
 // After being rendered, process the html files. (merge css files, etc)
-gulp.task('html', function () {
+gulp.task('html', ['styles'], function () {
   var conf = require('./_config');
   return gulp.src('_site/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
@@ -260,7 +260,7 @@ gulp.task('html', function () {
     .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace({prefix: conf.baseurl || ''}))
+    .pipe(revReplace({prefix: conf.baseurl + '/' || ''}))
     .pipe(gulp.dest('_site'));
 });
 
@@ -290,7 +290,10 @@ gulp.task('extras', function () {
     '!app/assets/graphics/**',
     '!app/assets/vendor/**',
     '!app/assets/styles/**',
-    '!app/assets/scripts/**'
+    '!app/assets/scripts/**',
+    '!app/posts/**',
+    '!app/layouts/**',
+    '!app/includes/**'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));

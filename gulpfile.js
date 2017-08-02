@@ -86,7 +86,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'metalsmit
 });
 
 gulp.task('clean', function () {
-  return del(['.tmp', 'dist', 'assets/content'])
+  return del(['.tmp', 'build', 'assets/content'])
     .then(function () {
       $.cache.clearAll();
     });
@@ -191,7 +191,7 @@ gulp.task('collecticons', function (done) {
 // ------------------------ Metalsmith tasks ---------------------------------//
 // ---------------------------------------------------------------------------//
 gulp.task('metalsmith', function (done) {
-  metalsmithTask().build(function (err, files) {
+  metalsmithTask({env: process.env.DS_ENV}).build(function (err, files) {
     if (err) {
       notifier.notify({
         title: 'Oops! Browserify errored:',
@@ -212,7 +212,7 @@ gulp.task('metalsmith', function (done) {
 
 gulp.task('build', ['vendorScripts', 'javascript', 'collecticons', 'metalsmith'], function () {
   gulp.start(['html', 'images', 'fonts', 'extras'], function () {
-    return gulp.src('dist/**/*')
+    return gulp.src('build/**/*')
       .pipe($.size({title: 'build', gzip: true}))
       .pipe(exit());
   });
@@ -251,7 +251,7 @@ gulp.task('styles', function () {
 });
 
 // After being rendered, process the html files. (merge css files, etc)
-gulp.task('html', function () {
+gulp.task('html', ['styles'], function () {
   var conf = require('./_config');
   return gulp.src('_site/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
@@ -260,7 +260,7 @@ gulp.task('html', function () {
     .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
-    .pipe(revReplace({prefix: conf.baseurl || ''}))
+    .pipe(revReplace({prefix: (conf.baseurl || '') + '/'}))
     .pipe(gulp.dest('_site'));
 });
 
@@ -274,13 +274,13 @@ gulp.task('images', function () {
       // as hooks for embedding and styling
       $.imagemin.svgo({plugins: [{cleanupIDs: false}]})
     ])))
-    .pipe(gulp.dest('dist/assets/graphics'));
+    .pipe(gulp.dest('build/assets/graphics'));
 });
 
 gulp.task('fonts', function () {
   return gulp.src('app/assets/fonts/**/*')
     .pipe(gulp.dest('.tmp/assets/fonts'))
-    .pipe(gulp.dest('dist/assets/fonts'));
+    .pipe(gulp.dest('build/assets/fonts'));
 });
 
 gulp.task('extras', function () {
@@ -290,8 +290,11 @@ gulp.task('extras', function () {
     '!app/assets/graphics/**',
     '!app/assets/vendor/**',
     '!app/assets/styles/**',
-    '!app/assets/scripts/**'
+    '!app/assets/scripts/**',
+    '!app/posts/**',
+    '!app/layouts/**',
+    '!app/includes/**'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'));
+  }).pipe(gulp.dest('build'));
 });

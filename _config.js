@@ -1,5 +1,5 @@
 module.exports = {
-  baseurl: 'http://localhost:3000',
+  baseurl: 'http://devseed.com/ui-seed',
 
   title: 'My Static Site & Blog',
   description: "It's about saying »Hello« to the World.",

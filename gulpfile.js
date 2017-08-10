@@ -253,19 +253,19 @@ gulp.task('styles', function () {
 // After being rendered, process the html files. (merge css files, etc)
 gulp.task('html', ['styles'], function () {
   var conf = require('./_config');
-  return gulp.src('_site/**/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+  return gulp.src('build/**/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app']}))
     // Do not compress comparisons, to avoid MapboxGLJS minification issue
     // https://github.com/mapbox/mapbox-gl-js/issues/4359#issuecomment-286277540
     .pipe($.if('*.js', $.uglify({compress: {comparisons: false}})))
     .pipe($.if('*.css', $.csso()))
     .pipe($.if(/\.(css|js)$/, rev()))
     .pipe(revReplace({prefix: (conf.baseurl || '') + '/'}))
-    .pipe(gulp.dest('_site'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('images', function () {
-  return gulp.src(['app/assets/graphics/**/*'])
+  return gulp.src(['app/assets/graphics/**/*', UISEED.graphicsPath + '/**/*'])
     .pipe($.cache($.imagemin([
       $.imagemin.gifsicle({interlaced: true}),
       $.imagemin.jpegtran({progressive: true}),

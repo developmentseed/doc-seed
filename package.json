@@ -88,6 +88,6 @@
   "dependencies": {
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.kebabcase": "^4.1.1",
-    "ui-seed": "https://github.com/developmentseed/ui-seed.git"
+    "ui-seed": "https://github.com/developmentseed/ui-seed.git#v0.1.1-beta"
   }
 }

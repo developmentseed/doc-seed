@@ -75,7 +75,7 @@ function permalinkOverride () {
         data.path = permalink;
         // Complete file path. If at this point the permalink is empty means
         // that we want the index file.
-        permalink = (permalink === '' ? '' : '/') + 'index.html';
+        permalink = (permalink === '' ? '' : `${permalink}/`) + 'index.html';
         delete files[file];
         files[permalink] = data;
       }

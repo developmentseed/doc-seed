@@ -8,6 +8,7 @@ var permalinks = require('metalsmith-permalinks');
 var collections = require('metalsmith-collections');
 var debug = require('metalsmith-debug');
 var dirHierarchy = require('metalsmith-directory-hierarchy');
+var assets = require('metalsmith-assets');
 var kebabCase = require('lodash.kebabcase');
 
 module.exports = function (opts) {
@@ -51,6 +52,10 @@ module.exports = function (opts) {
       }]
     }))
     .use(permalinkOverride())
+    .use(assets({
+      source: './app/assets/docs', // relative to the working directory
+      destination: './docs' // relative to the build directory
+    }))
     .use(layouts({
       engine: 'ejs',
       directory: 'app/layouts'

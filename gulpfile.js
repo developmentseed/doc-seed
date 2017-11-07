@@ -64,7 +64,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'metalsmit
     port: 3000,
     ghostMode: false,
     server: {
-      baseDir: ['.tmp', 'build'],
+      baseDir: ['.tmp', 'build', 'app'],
       routes: {
         '/node_modules': './node_modules'
       },

@@ -24,10 +24,24 @@
         <section class="inpage">
           <header class="inpage__header">
             <div class="inner">
+              <% if (site.attribution && site.attribution.name) { %>
+              <address class="inpage__attribution">
+                <small><%= site.attribution.role %></small>
+                <span>
+                  <a href="<%= site.attribution.url %>" title="Visit">
+                    <strong><%= site.attribution.name %></strong>
+                    <% if (site.attribution.logo) { %>
+                    <img alt="<%= site.attribution.name %> logo" src="<%= site.baseurl %>/assets/graphics/content/<%= site.attribution.logo %>" />
+                    <% } %>
+                  </a>
+                </span>
+              </address>
+              <% } %>
               <div class="inpage__headline">
                 <p class="inpage__subtitle"><%= section.label %></p>
                 <h1 class="inpage__title"><%= title %></h1>
               </div>
+
             </div>
           </header>
 

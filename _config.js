@@ -8,9 +8,9 @@ module.exports = {
     's1-components': 'Components'
   },
   attribution: {
-    name: 'World Bank Group',
+    name: 'Generic Company',
     role: 'Developed for',
-    logo: 'wbg-logo-hor-col-grad.png',
-    url: 'http://www.worldbank.org'
+    logo: 'generic-logo-pos-hor.svg',
+    url: 'https://github.com/developmentseed/ui-seed/'
   }
 };

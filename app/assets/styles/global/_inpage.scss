@@ -2,6 +2,10 @@
    Global: Inpage
    ========================================================================== */
 
+.inpage {
+
+}
+
 .inpage__header {
   padding: ($global-spacing * 2) 0;
 }
@@ -9,72 +13,10 @@
 .inpage__header,
 .inpage__body,
 .inpage__footer {
-  > .inner {  
-    @extend .row;
-
+  > .inner {
     > *:last-child {
       margin-bottom: 0;
     }
-  }
-
-  @include media(medium-up) {
-    padding-left: $global-spacing * 2;
-    padding-right: $global-spacing * 2;
-  }
-
-}
-
-.inpage__attribution,
-.inpage__headline,
-.inpage__body .prose {
-  @include column(12/12);
-  max-width: 48rem;
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.inpage__attribution {
-  position: relative;
-  font-style: normal;
-  padding: 0 0 ($global-spacing / 2) 0;
-  box-shadow: 0 1px 0 0 rgba($base-color, 0.08);
-  overflow: hidden;
-  margin: 0 0 ($global-spacing * 2) 0;
-
-  small {
-    @extend .heading-alt;
-    position: relative;
-    color: rgba($base-font-color, 0.64);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    display: block;
-  }
-
-  span {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-weight: $base-font-bold;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  strong {
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  img {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(0, -50%);
-    width: auto;
-    max-height: 2rem;
-    margin-top: -0.25rem;
   }
 }
 
@@ -86,6 +28,10 @@
     background: $base-font-color;
     display: block;
     margin: 0.75rem 0 0 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -103,18 +49,27 @@
 }
 
 .inpage__body {
+  padding: 0 0 ($global-spacing * 8) 0;
+
+  .prose {
+      > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
-// TEMPORARY
-.inpage__actions {
-  @include column(12/12);
-  clear: left;
-  margin-top: $global-spacing * 2;
+.inpage__footer {
+  position: fixed;
+  bottom: 0;
+  padding: ($global-spacing * 2) 0;
+  background: #fff;
+  box-shadow: 0 -1px 0 0 rgba($base-color, 0.08);
+  width: 100%;
   max-width: 48rem;
+}
 
-  > *:last-child {
-    margin-bottom: 0;
-  }
+.inpage__actions {
+
 
   ul {
     @extend .clearfix;
@@ -125,14 +80,14 @@
     li {
       float: left;
       margin-right: $global-spacing;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
 
-.inpage__footer {
-  position: fixed;
-  bottom: $global-spacing * 2;
-}
 
 /* Buttons
    ========================================================================== */

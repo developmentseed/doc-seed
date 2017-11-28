@@ -20,10 +20,7 @@
   z-index: 10;
   background: $base-font-color;
   color: #fff;
-
-  > .inner {
-    padding: ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 5) ($global-spacing * 2);
-  }
+  padding: ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 5) ($global-spacing * 2);
 }
 
 /* Headline */
@@ -89,6 +86,74 @@
   height: 100vh;
   overflow: scroll;
   position: relative;
+  max-width: 56rem;
+
+  padding: ($global-spacing * 2) 0 0 0;
+
+  @include media(medium-up) {
+    padding-left: $global-spacing * 2;
+    padding-right: $global-spacing * 2;
+  }
+
+  > .inner {  
+    @extend .row;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.page__attribution {
+  @include column(12/12);
+  max-width: 48rem;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.page__attribution {
+  position: relative;
+  font-style: normal;
+  padding: 0 0 ($global-spacing / 2) 0;
+  box-shadow: 0 1px 0 0 rgba($base-color, 0.08);
+  overflow: hidden;
+  margin: 0 0 ($global-spacing * 2) 0;
+
+  small {
+    @extend .heading-alt;
+    position: relative;
+    color: rgba($base-font-color, 0.64);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    display: block;
+  }
+
+  span {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: $base-font-bold;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  strong {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    width: auto;
+    max-height: 2rem;
+    margin-top: -0.25rem;
+  }
 }
 
 
@@ -107,12 +172,13 @@
   line-height: 1rem;
   font-weight: $base-font-regular;
   overflow: hidden;
+  height: $global-spacing * 6;
+  padding: ($global-spacing / 2) 0 ($global-spacing * 2) 0;
 
   a {
     position: relative;
     color: inherit;
     display: block;
-    padding-top: $global-spacing / 2;
 
     span {
       font-weight: $base-font-bold;
@@ -120,7 +186,7 @@
 
     img {
       position: absolute;
-      top: 0.5rem;
+      top: 0;
       left: -3rem;
       width: 2rem;
       height: auto;
@@ -128,7 +194,7 @@
 
     &::before {
       position: absolute;
-      top: 0;
+      top: -($global-spacing / 2);
       left: -3rem;
       background: $primary-color;
       height: 6rem;
@@ -144,7 +210,7 @@
   }
 
   > .inner {
-    padding: 0 ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 5);
+    padding: 0 ($global-spacing * 2) 0 ($global-spacing * 5);
   }
 
   *:last-child {

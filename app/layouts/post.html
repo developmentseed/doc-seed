@@ -16,7 +16,15 @@
               <p class="page__subtitle"><%= site.description %></p>
             </a>
           </div>
-          <%- include('../includes/navigation') %>
+          <div class="page__browser pb">
+            <h2 class="pb__title"><a href="#ppn__contents" title="Show/hide"><span>Navigation & Colophon</span></a></h2>
+            <div id="pb__contents">
+              <%- include('../includes/navigation') %>
+              <div class="page__colophon">
+                <p>Page colophon goes here.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -91,8 +99,11 @@
       <footer class="page__footer" role="contentinfo">
         <div class="inner">
           <p>
-            <a href="https://developmentseed.org" title="Visit Development Seed website"><img src="<%- site.baseurl %>/assets/graphics/layout/devseed-logo-symbol.svg" alt="Development Seed logo symbol" width="512" height="152" /> <span>Development Seed</span></a>
-            <small><%- (new Date()).getFullYear() %></small>
+            <a href="https://developmentseed.org" title="Visit Development Seed website">
+              <span><img src="<%- site.baseurl %>/assets/graphics/layout/devseed-logo-symbol.svg" alt="Development Seed logo symbol" width="512" height="152" /></span>
+              <strong>Development Seed</strong>
+              <small><%- (new Date()).getFullYear() %></small>
+            </a>
           </p>
         </div>
       </footer>

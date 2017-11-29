@@ -123,11 +123,12 @@
 }
 
 .page__attribution {
-  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
   font-style: normal;
   padding: 0 0 ($global-spacing / 2) 0;
   box-shadow: 0 1px 0 0 rgba($base-color, 0.08);
-  overflow: hidden;
   margin: 0 0 ($global-spacing * 2) 0;
 
   small {
@@ -139,7 +140,7 @@
     display: block;
   }
 
-  span {
+  strong {
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: $base-font-bold;
@@ -149,19 +150,26 @@
     color: inherit;
   }
 
-  strong {
-    display: inline-block;
-    vertical-align: top;
-  }
-
   img {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(0, -50%);
     width: auto;
     max-height: 2rem;
-    margin-top: -0.25rem;
+  }
+}
+
+.pa__label {
+  width: 100%;
+
+  @include media(medium-up) {
+    padding-right: $global-spacing;
+  }
+}
+
+.pa__logo {
+  flex: 0 1 auto;
+  display: none;
+
+  @include media(medium-up) {
+    display: block;
   }
 }
 

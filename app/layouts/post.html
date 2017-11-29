@@ -30,16 +30,18 @@
 
           <% if (site.attribution && site.attribution.name) { %>
           <!-- attribution -->
-          <address class="page__attribution">
-            <small><%= site.attribution.role %></small>
-            <span>
+          <address class="page__attribution pa">
+            <div class="pa__label">
+              <small><%= site.attribution.role %></small>
               <a href="<%= site.attribution.url %>" title="Visit">
                 <strong><%= site.attribution.name %></strong>
-                <% if (site.attribution.logo) { %>
-                <img alt="<%= site.attribution.name %> logo" src="<%= site.baseurl %>/assets/graphics/content/<%= site.attribution.logo %>" />
-                <% } %>
               </a>
-            </span>
+            </div>
+            <% if (site.attribution.logo) { %>
+            <div class="pa__logo">
+              <img alt="<%= site.attribution.name %> logo" src="<%= site.baseurl %>/assets/graphics/content/<%= site.attribution.logo %>" />
+            </div>
+            <% } %>
           </address>
           <!--/ attribution -->
           <% } %>

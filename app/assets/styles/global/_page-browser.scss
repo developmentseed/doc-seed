@@ -3,7 +3,9 @@
    ========================================================================== */
 
 .pb {
-  display: none;
+  position: relative;
+  display: none; // TEMP
+  flex: 1;
 
   &::before {
     content: '';
@@ -11,11 +13,23 @@
     height: 1px;
     background: #fff;
     display: block;
-    margin: 0.75rem 0 2rem 0;
+    margin: 0.75rem 0 ($global-spacing * 2) 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: $global-spacing;
+    background-image: linear-gradient(to bottom, transparent, $base-font-color);
+    pointer-events: none;
   }
 
   @include media(medium-up) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -36,6 +50,18 @@
     font-size: 0;
     visibility: hidden;
     opacity: none;
+  }
+}
+
+.pb__contents {
+  overflow: auto;
+  margin: 0 (-$global-spacing);
+  padding: 0 $global-spacing;
+
+  @include media(medium-up) {
+    display: block;
+    margin: 0 (-$global-spacing * 2);
+    padding: 0 ($global-spacing * 2) $global-spacing ($global-spacing * 2);
   }
 }
 

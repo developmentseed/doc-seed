@@ -6673,9 +6673,9 @@ uglify-js@^3.0.5:
     commander "~2.11.0"
     source-map "~0.5.1"
 
-"ui-seed@https://github.com/developmentseed/ui-seed.git#v0.1.1-beta":
-  version "0.1.1-beta"
-  resolved "https://github.com/developmentseed/ui-seed.git#de2b3c15f36c5a748bb2d4940df30a80df0a6594"
+"ui-seed@https://github.com/developmentseed/ui-seed.git#develop":
+  version "0.2.1-beta"
+  resolved "https://github.com/developmentseed/ui-seed.git#d34d7c9aac0ce5251db9a29d1b071842341473d5"
   dependencies:
     react ">15.0.1"
     react-addons-css-transition-group ">15.0.2"

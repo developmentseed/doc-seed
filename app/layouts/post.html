@@ -39,7 +39,9 @@
             </div>
             <% if (site.attribution.logo) { %>
             <div class="pa__logo">
-              <img alt="<%= site.attribution.name %> logo" src="<%= site.baseurl %>/assets/graphics/content/<%= site.attribution.logo %>" />
+              <a href="<%= site.attribution.url %>" title="Visit">
+                <img alt="<%= site.attribution.name %> logo" src="<%= site.baseurl %>/assets/graphics/content/<%= site.attribution.logo %>" />
+              </a>
             </div>
             <% } %>
           </address>

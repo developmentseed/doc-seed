@@ -3,9 +3,13 @@
    ========================================================================== */
 
 .pb {
-  position: relative;
-  display: none; // TEMP
   flex: 1;
+  display: none; // Temp
+
+  @include media(medium-up) {
+    display: flex;
+    flex-direction: column;
+  }
 
   &::before {
     content: '';
@@ -17,6 +21,7 @@
   }
 
   &::after {
+    display: none;
     content: "";
     position: absolute; 
     bottom: 0; 
@@ -25,11 +30,10 @@
     height: $global-spacing;
     background-image: linear-gradient(to bottom, transparent, $base-font-color);
     pointer-events: none;
-  }
 
-  @include media(medium-up) {
-    display: flex;
-    flex-direction: column;
+    @include media(medium-up) {
+      display: block;
+    }
   }
 }
 
@@ -65,6 +69,7 @@
   }
 }
 
+.pb__contents,
 .page__colophon,
 .page__prime-nav,
 .ppn__section {

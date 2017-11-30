@@ -3,7 +3,7 @@
 
   <div class="ppn__block" id="ppn__block">
     <% var sections = hierarchy.children.posts.children %>
-    <% var secKeys = Object.keys(sections) %>
+    <% var secKeys = Object.keys(sections).sort() %>
 
     <% secKeys.forEach(function (k) { %>
     <section class="ppn__section">

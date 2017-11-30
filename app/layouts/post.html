@@ -16,8 +16,8 @@
               <p class="page__subtitle"><%= site.description %></p>
             </a>
           </div>
-          <div class="page__browser pb">
-            <h2 class="pb__title"><a href="#ppn__contents" title="Show/hide" class="pb__toggle"><span>Navigation & Colophon</span></a></h2>
+          <div class="page__browser pb" data-hook="menu:wrapper">
+            <h2 class="pb__title"><a href="#ppn__contents" title="Show/hide" class="pb__toggle" data-hook="menu:toggle"><span>Navigation & Colophon</span></a></h2>
             <div id="pb__contents" class="pb__contents">
               <div class="inner">
                 <%- include('../includes/navigation') %>

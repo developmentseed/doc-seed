@@ -1,6 +1,6 @@
 <nav class="page__prime-nav ppn">
   <% var sections = hierarchy.children.posts.children %>
-  <% var secKeys = Object.keys(sections) %>
+  <% var secKeys = Object.keys(sections).sort() %>
 
   <% secKeys.forEach(function (k) { %>
   <section class="ppn__section">

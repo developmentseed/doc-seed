@@ -74,7 +74,6 @@
     "metalsmith-debug": "^1.1.0",
     "metalsmith-directory-hierarchy": "^1.0.1",
     "metalsmith-layouts": "^1.8.1",
-    "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.5.0",
     "node-bourbon": "^4.2.8",
     "node-notifier": "^5.0.2",
@@ -87,7 +86,8 @@
   "dependencies": {
     "lodash.defaultsdeep": "^4.6.0",
     "lodash.kebabcase": "^4.1.1",
+    "markdown-it": "^8.4.0",
+    "markdown-it-attrs": "^1.2.0",
     "ui-seed": "https://github.com/developmentseed/ui-seed.git#develop"
-
   }
 }

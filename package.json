@@ -16,8 +16,7 @@
   },
   "homepage": "",
   "scripts": {
-    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {};' > app/assets/scripts/config/local.js; [ -f _config-dev.js ] || echo 'module.exports = {};' > _config-dev.js",
-    "serve": "DS_ENV=development gulp collecticons && DS_ENV=development gulp serve",
+    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo \"'use strict';\n\nexport default {\n  environment: 'development'\n};\" > app/assets/scripts/config/local.js; [ -f _config-dev.js ] || echo \"module.exports = {\n  baseurl: 'http://localhost:3000'\n};\" > _config-dev.js",    "serve": "DS_ENV=development gulp collecticons && DS_ENV=development gulp serve",
     "build": "DS_ENV=production NODE_ENV=production gulp",
     "lint": "eslint app/assets/scripts/ --ext .js",
     "test": "echo \"No tests\" && exit 0"
@@ -89,6 +88,6 @@
     "lodash.kebabcase": "^4.1.1",
     "markdown-it": "^8.4.0",
     "markdown-it-attrs": "^1.2.0",
-    "ui-seed": "https://github.com/developmentseed/ui-seed.git#v0.1.1-beta"
+    "ui-seed": "https://github.com/developmentseed/ui-seed.git#develop"
   }
 }

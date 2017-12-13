@@ -2,13 +2,14 @@
 var defaultsDeep = require('lodash.defaultsdeep');
 
 var Metalsmith = require('metalsmith');
-var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
 var permalinks = require('metalsmith-permalinks');
 var collections = require('metalsmith-collections');
 var debug = require('metalsmith-debug');
 var dirHierarchy = require('metalsmith-directory-hierarchy');
 var kebabCase = require('lodash.kebabcase');
+
+var markdown = require('./md-renderer');
 
 module.exports = function (opts) {
   // Reload config.

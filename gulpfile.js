@@ -82,7 +82,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles', 'fonts', 'metalsmit
   gulp.watch('app/assets/styles/**/*.scss', ['styles']);
   gulp.watch('app/assets/fonts/**/*', ['fonts']);
   gulp.watch('package.json', ['vendorScripts']);
-  gulp.watch('app/assets/graphics/collecticons/**', ['collecticons']);
+  gulp.watch('app/assets/icons/collecticons/**', ['collecticons']);
 });
 
 gulp.task('clean', function () {
@@ -169,7 +169,7 @@ gulp.task('collecticons', function (done) {
   var args = [
     'node_modules/collecticons-processor/bin/collecticons.js',
     'compile',
-    'app/assets/graphics/collecticons/',
+    'app/assets/icons/collecticons/',
     '--font-embed',
     '--font-dest', 'app/assets/fonts',
     '--font-name', 'Collecticons',

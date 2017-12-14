@@ -76,6 +76,7 @@
     background: #fff;
     display: block;
     margin: 0.75rem 0 $global-spacing $global-spacing;
+    flex: 0 0 auto;
 
     @include media(medium-up) {
       margin-left: ($global-spacing * 2);

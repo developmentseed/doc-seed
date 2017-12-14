@@ -4,7 +4,10 @@ var debug = require('debug')('metalsmith-markdown');
 var dirname = require('path').dirname;
 var extname = require('path').extname;
 
-const md = require('markdown-it')();
+const md = require('markdown-it')({
+  html: true,
+  xhtmlOut: true
+});
 const attrs = require('markdown-it-attrs');
 md.use(attrs);
 

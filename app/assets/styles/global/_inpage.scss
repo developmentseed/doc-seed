@@ -23,7 +23,7 @@
     height: 1px;
     background: $base-font-color;
     display: block;
-    margin: 0.75rem 0 0 0;
+    margin: calc(0.75rem - 1px) 0 0 0;
   }
 
   > *:last-child {
@@ -45,13 +45,12 @@
 }
 
 .inpage__body {
-
   @include media(medium-up) {
     padding: 0 0 ($global-spacing * 8) 0;
   }
 
   .prose {
-      > *:last-child {
+    > *:last-child {
       margin-bottom: 0;
     }
   }
@@ -70,7 +69,7 @@
 
   @include media(medium-up) {
     left: auto;
-    padding: ($global-spacing * 2) 0;
+    padding: ($global-spacing * 1.5) 0;
   }
 }
 

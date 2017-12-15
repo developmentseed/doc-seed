@@ -1,8 +1,8 @@
 module.exports = {
   baseurl: 'http://devseed.com/ui-seed',
 
-  title: 'My Documentation Site',
-  description: 'It\'s about saying "Hello" to the World.',
+  title: 'This is a title',
+  description: 'This is a description.',
   sectionsMeta: {
     's0-introduction': 'Introduction',
     's1-components': 'Components'

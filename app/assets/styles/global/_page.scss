@@ -25,8 +25,12 @@
   @include media(medium-up) {
     position: fixed;
     height: 100vh;
-    width: 20rem;
+    width: 16rem;
     padding: ($global-spacing * 2) ($global-spacing * 2) ($global-spacing * 8) ($global-spacing * 2);
+  }
+
+  @include media(large-up) {
+    width: 20rem;
   }
 
   > .inner {
@@ -98,8 +102,15 @@
   @include media(medium-up) {
     flex: 1;
     height: 100vh;
-    margin-left: 20rem;
+    margin-left: 16rem;
+    width: 100%;
     max-width: 56rem;
+    padding-left: $global-spacing * 1.25;
+    padding-right: $global-spacing * 1.25;
+  }
+
+  @include media(large-up) {
+    margin-left: 20rem;
     padding-left: $global-spacing * 2;
     padding-right: $global-spacing * 2;
   }
@@ -114,20 +125,18 @@
 }
 
 .page__attribution {
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.page__attribution {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   font-style: normal;
-  padding: 0 0 ($global-spacing / 2) 0;
+  padding: 0 0 ($global-spacing) 0;
   box-shadow: 0 1px 0 0 rgba($base-color, 0.08);
   margin: 0 0 ($global-spacing * 2) 0;
   clear: both;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 
   small {
     @extend .heading-alt;
@@ -200,7 +209,7 @@
     padding: ($global-spacing * 2) 0 ($global-spacing * 5) 0;
 
     @include media(medium-up) {
-      padding: 0 0 ($global-spacing * 3.5) 0;
+      padding: 0 0 ($global-spacing * 2.5) 0;
       box-shadow: none;
     }
   }

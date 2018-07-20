@@ -28,9 +28,7 @@ Install Node modules:
 yarn install
 ```
 
-### Usage
-
-#### Configuration of Doc Seed
+## Configuration of Doc Seed
 According to the build environment different config files may be loaded, but all of them override `_config.js`
 
 - `_config-staging.js` is loaded for the staging environment
@@ -58,7 +56,7 @@ The base structure of a config file is:
 ```
 
 **baseurl**  
-The url where the site will live, without trailing slash. This is important for using with images and internal links. (See section **Writing Posts**)
+The url where the site will live, without trailing slash. This is important for using with images and internal links. (See section [Writing Posts](#writing-posts))
 
 **title** and **description**  
 The title and description of the documentation site. It will appear on the right side
@@ -71,9 +69,9 @@ If the documentation site is for a client it may be a good idea to include a pag
 ![](docs/graphics/docseed-header.png)
 
 **sectionsMeta**  
-Used to define the labels for each section of the website. (See section **Structure and Navigation**)
+Used to define the labels for each section of the website. (See section [Structure and Navigation](#structure-and-navigation)
 
-#### Structure and Navigation
+## Structure and Navigation
 The content of the site goes inside `app/posts` and is divided by section. Here each folder corresponds to a section for which a label must be defined in the config file.
 This will result in section titles rendered in the sidebar.
 
@@ -107,11 +105,11 @@ Doc Seed also supports nested pages. To add a nested page just create a new fold
 
 ![](docs/graphics/navigation-nested.png)
 
-The urls for each post are created from the section name and the title property defined in the markdown file (see **Writing Posts** for info about these properties). To avoid overrides, all the posts inside a section must have different titles or their permalink must be changed using the correct property.
+The urls for each post are created from the section name and the title property defined in the markdown file (see [Writing Posts](#writing-posts) for info about these properties). To avoid overrides, all the posts inside a section must have different titles or their permalink must be changed using the correct property.
 
-#### Writing Posts
+## Writing Posts
 The posts are written in [markdown](https://daringfireball.net/projects/markdown/syntax) but `html` is also supported if needed.
-For a post to be processed by Doc seed it need to include the `YAML frontmatter` which is the information between the `---` (triple dashes).
+For a post to be processed by Doc Seed it needs to include the `YAML frontmatter` which is the information between the `---` (triple dashes).
 
 Example:
 ```
@@ -138,7 +136,14 @@ Used by Doc Seed to know which layout to use. **Must always be `post.html`**
 **permalink**
 Allows us to override the default generated url for a post. To set a page as the entry point for the documentation site use `permalink: '/'` 
 
-#### Starting the app
+#### Using variables
+It is possible to used variables defined in the config directly in the markdown file.
+To render a variable just use the following syntax `{{varName}}`. This is very useful when including images which should always have the full url:
+```
+![]({{baseurl}}/assets/graphics/content/docseed.png)
+```
+
+### Starting the app
 
 ```
 yarn run serve

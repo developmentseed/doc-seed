@@ -40,7 +40,7 @@ function plugin (options) {
 
       debug('converting file: %s', file);
       var str = md.render(data.contents.toString(), options);
-      data.contents = new Buffer(str);
+      data.contents = Buffer.from(str);
       keys.forEach(function (key) {
         data[key] = md.render(data[key], options);
       });

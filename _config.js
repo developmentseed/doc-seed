@@ -1,16 +1,17 @@
 module.exports = {
-  baseurl: 'http://devseed.com/ui-seed',
+  baseurl: 'http://devseed.com/doc-seed',
+  title: 'Doc Seed',
+  description: 'A quick way to create a documentation site',
 
-  title: 'My Documentation Site',
-  description: 'It\'s about saying "Hello" to the World.',
+  attribution: {
+    role: 'Developed for',
+    name: 'Generic Company',
+    logo: 'generic-logo-pos-hor.svg',
+    url: 'https://developmentseed.org'
+  },
+
   sectionsMeta: {
     's0-introduction': 'Introduction',
     's1-components': 'Components'
-  },
-  attribution: {
-    name: 'Generic Company',
-    role: 'Developed for',
-    logo: 'generic-logo-pos-hor.svg',
-    url: 'https://github.com/developmentseed/ui-seed/'
   }
 };

@@ -160,3 +160,9 @@ yarn run build
 ```
 This will package the app and place all the contents in the `dist` directory.
 The app can then be run by any web server.
+
+
+### Deploying in gh-pages ussing circle CI
+
+- Guide : https://github.com/developmentseed/how/issues/149
+- Example:https://github.com/WorldBank-Transport/ram/blob/master/.circleci/config.yml

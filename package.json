@@ -20,7 +20,8 @@
     "serve": "DS_ENV=development gulp collecticons && DS_ENV=development gulp serve",
     "build": "DS_ENV=production NODE_ENV=production gulp",
     "lint": "eslint app/assets/scripts/ --ext .js",
-    "test": "echo \"No tests\" && exit 0"
+    "test": "echo \"No tests\" && exit 0",
+    "deploy": "yarn run build && gh-pages -d build"
   },
   "engines": {
     "node": "8.x"
@@ -59,6 +60,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "gh-pages": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-cache": "^1.0.1",
     "gulp-csso": "^3.0.0",
@@ -96,6 +98,5 @@
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

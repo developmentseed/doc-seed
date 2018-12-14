@@ -160,3 +160,11 @@ yarn run build
 ```
 This will package the app and place all the contents in the `dist` directory.
 The app can then be run by any web server.
+
+### Deploy the app in gh-pages
+
+```
+yarn run deploy
+```
+
+The above command line will put automatically the app in the gh-page branch, to update it run the same command.
